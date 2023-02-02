@@ -3,8 +3,19 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/database.json')[env];
 
 // Option 3: Passing parameters separately (other dialects)
-const sequelize = new Sequelize(config);
-
+const sequelize = new Sequelize({
+    username: 'root',
+    password: 'secret',
+    database: 'sequelizedb',
+    host: 'mysql',
+    dialect: 'mysql',
+    // logging: true,
+    define: {
+        timestamps: true,
+        underscored: true,
+    },
+});
+// const sequelize = new Sequelize(config);
 const db = async () => {
     try {
         await sequelize.authenticate();

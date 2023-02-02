@@ -1,25 +1,25 @@
-GET http://localhost:3002/api/user/getall?keyword=
+GET http://localhost:3000/api/user/getall?keyword=
 
 ###
-GET http://localhost:3002/api/user/getbyid/3
+GET http://localhost:3000/api/user/getbyid/1
 ###
-POST http://localhost:3002/api/user/create
+POST http://127.0.0.1:3000/api/user/create
 content-type: application/json
 
 {
-    "firstName":"duy",
-    "lastName":"khương",
-    "email":"duykhương@gmail.com"
+    "firstName":"huy",
+    "lastName":"huy",
+    "email":"huy1@gmail.com"
 }
 ###
-PUT http://localhost:3002/api/user/update/4
+PUT http://localhost:3000/api/user/update/1
 content-type: application/json
 
 {
-    "firstName":"lê duy",
-    "lastName":"khương",
+    "firstName":"lê huy",
+    "lastName":"ne",
     "email":"duykhương@gmail.com"
 }
 
 ###
-DELETE http://localhost:3002/api/user/delete/1
+DELETE http://localhost:3000/api/user/delete/4

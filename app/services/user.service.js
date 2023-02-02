@@ -47,14 +47,16 @@ exports.getById = async (id, result) => {
 exports.register = async (data, result) => {
     try {
         const [user, created] = await db.User.findOrCreate({ where: { email: data.email }, defaults: data });
-        // console.log(user, created);
+        // console.log('HUY NE', user);
         if (created) {
             result(null, { msg: 'Đăng kí thành công', data: user });
         } else {
+            console.log('Tao lao roi!');
+
             result({ msg: 'email đã tồn tại' }, null);
         }
     } catch (error) {
-        // console.log(error);
+        // console.log('error');
         result({ msg: error }, null);
     }
 };
@@ -62,7 +64,10 @@ exports.register = async (data, result) => {
 exports.update = async (data, id, result) => {
     try {
         const dataUser = await db.User.findByPk(id);
-        // console.log(typeof data.email);
+        if (dataUser === null) {
+            result({ msg: 'ID không tồn tại!' }, null);
+            return;
+        }
         if (data.email == dataUser.email) {
             const resultUpdate = await db.User.update(data, { where: { id } });
             // console.log(resultUpdate);
@@ -88,6 +93,7 @@ exports.update = async (data, id, result) => {
             }
         }
     } catch (error) {
+        console.log(error);
         result({ msg: error }, null);
     }
 };

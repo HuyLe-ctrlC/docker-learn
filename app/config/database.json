@@ -1,9 +1,9 @@
 {
     "development": {
         "username": "root",
-        "password": null,
+        "password": "secret",
         "database": "sequelizedb",
-        "host": "localhost",
+        "host": "mysql",
         "dialect": "mysql",
         "logging": true,
         "define": {
